@@ -7,63 +7,109 @@ const monthly = document.querySelector(".monthly");
 const checkbox = document.querySelector(".checkbox");
 const freeMonths = document.querySelectorAll(".free-months");
 
+const nav1 = document.querySelectorAll('.first')
+const nav2 = document.querySelectorAll('.second')
+const nav3 = document.querySelectorAll('.third')
+const nav4 = document.querySelectorAll('.fourth')
+
 const mobile1 = document.querySelector(".mobile-1");
 const mobile2 = document.querySelector(".mobile-2");
 const mobile3 = document.querySelector(".mobile-3");
 const mobile4 = document.querySelector(".mobile-4");
 const mobile5 = document.querySelector(".mobile-5");
 
-const nextMobile = document.querySelector(".next");
-const prevBtnMobile = document.querySelector(".prev-btn-mobile");
+const desktop1 = document.querySelector('.desktop-1')
+const desktop2 = document.querySelector('.desktop-2')
+const desktop3 = document.querySelector('.desktop-3')
+const desktop4 = document.querySelector('.desktop-4')
+const desktop5 = document.querySelector('.desktop-5')
+
+const next = document.querySelectorAll(".next");
+const prevBtns = document.querySelectorAll(".prev-btn");
 
 let step = 1;
 
+const disableAll = () => {
+		mobile1.classList.add("disable");
+		mobile2.classList.add("disable");
+		mobile3.classList.add("disable");
+		mobile4.classList.add("disable");
+		mobile5.classList.add("disable");
+		desktop1.classList.add("disable");
+		desktop2.classList.add("disable");
+		desktop3.classList.add("disable");
+		desktop4.classList.add("disable");
+		desktop5.classList.add("disable");
+		nav1.forEach(nav1 => {
+			nav1.classList.remove('circle-active')
+		})
+		nav2.forEach(nav2 => {
+			nav2.classList.remove('circle-active')
+		})
+		nav3.forEach(nav3 => {
+			nav3.classList.remove('circle-active')
+		})
+		nav4.forEach(nav4 => {
+			nav4.classList.remove('circle-active')
+		})
+}
+
 const displayCheck = () => {
 	if (step == 1) {
+		disableAll();
 		mobile1.classList.remove("disable");
-		mobile2.classList.add("disable");
-		mobile3.classList.add("disable");
-		mobile4.classList.add("disable");
-		mobile5.classList.add("disable");
+		desktop1.classList.remove("disable");
+		nav1.forEach(nav1 => {
+			nav1.classList.add('circle-active')
+		})
 		managePrevBtn(0);
 	} else if (step == 2) {
+		disableAll();
 		mobile2.classList.remove("disable");
-		mobile1.classList.add("disable");
-		mobile3.classList.add("disable");
-		mobile4.classList.add("disable");
-		mobile5.classList.add("disable");
+		desktop2.classList.remove("disable");
+		nav2.forEach(nav2 => {
+			nav2.classList.add('circle-active')
+		})
 		managePrevBtn(1);
 	} else if (step == 3) {
+		disableAll();
 		mobile3.classList.remove("disable");
-		mobile1.classList.add("disable");
-		mobile2.classList.add("disable");
-		mobile4.classList.add("disable");
-		mobile5.classList.add("disable");
+		desktop3.classList.remove("disable");
+		nav3.forEach(nav3 => {
+			nav3.classList.add('circle-active')
+		})
 		managePrevBtn(1);
 	} else if (step == 4) {
+		disableAll();
 		mobile4.classList.remove("disable");
-		mobile1.classList.add("disable");
-		mobile2.classList.add("disable");
-		mobile3.classList.add("disable");
-		mobile5.classList.add("disable");
+		desktop4.classList.remove("disable");
+		nav4.forEach(nav4 => {
+			nav4.classList.add('circle-active')
+		})
 		managePrevBtn(1);
 	} else {
+		disableAll();
 		mobile5.classList.remove("disable");
-		mobile1.classList.add("disable");
-		mobile2.classList.add("disable");
-		mobile3.classList.add("disable");
-		mobile4.classList.add("disable");
+		desktop5.classList.remove("disable");
 		managePrevBtn(1);
 	}
 };
 
 const managePrevBtn = (mode) => {
 	if (mode == 1) {
-		prevBtnMobile.classList.remove("disable");
-		nextMobile.style.justifyContent = "space-between";
+		prevBtns.forEach(btn => {
+			btn.classList.remove('disable');
+		})
+		next.forEach(box => {
+			box.style.justifyContent = "space-between";
+		})
 	} else {
-		prevBtnMobile.classList.add("disable");
-		nextMobile.style.justifyContent = "flex-end";
+		prevBtns.forEach(btn => {
+			btn.classList.add('disable');
+		})
+		next.forEach(box => {
+			box.style.justifyContent = "flex-end";
+		})
 	}
 };
 
@@ -74,10 +120,15 @@ nextStepBtn.forEach((btn) => {
 	});
 });
 
-prevBtnMobile.addEventListener('click', () => {
-    step--;
-    displayCheck();
+prevBtns.forEach(btn => {
+	btn.addEventListener("click", () => {
+		step--;
+		displayCheck();
+	});
 })
+
+
+
 
 switchBtn.addEventListener("click", (e) => {
 	if (checkbox.checked) {
