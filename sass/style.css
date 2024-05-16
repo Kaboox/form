@@ -156,6 +156,10 @@ body {
   padding: 0.8em;
   border-radius: 5px;
 }
+.main-content .input-box input:focus {
+  outline: none !important;
+  border-color: hsl(213, 96%, 18%);
+}
 .main-content .plan-box {
   display: flex;
   align-items: center;
@@ -404,6 +408,10 @@ body {
     padding: 1em;
     border: 1px solid lightgray;
     border-radius: 8px;
+  }
+  .wrapper .right .input-box input:focus {
+    outline: none !important;
+    border-color: hsl(213, 96%, 18%);
   }
   .wrapper .right .input-box-name {
     grid-row: 3/4;

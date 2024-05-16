@@ -17,6 +17,7 @@ body {
 	font-family: sans-serif;
 }
 
+
 .hide {
 	opacity: 0;
 }
@@ -175,6 +176,13 @@ body {
 			padding: 0.8em;
 			border-radius: 5px;
 		}
+
+		input:focus {
+			outline: none !important;
+			border-color:hsl(213, 96%, 18%);
+		}
+
+		
 	}
 
 	.plan-box {
@@ -459,6 +467,11 @@ body {
 					padding: 1em;
 					border: 1px solid lightgray;
 					border-radius: 8px;
+				}
+
+				input:focus {
+					outline: none !important;
+					border-color:hsl(213, 96%, 18%);
 				}
 			}
 
