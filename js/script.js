@@ -1,10 +1,10 @@
 const nextStepBtn = document.querySelectorAll(".next-btn");
 const stepTitle = document.querySelector(".step-title");
 const blankText = document.querySelector(".blank-text");
-const switchBtn = document.querySelector(".switch");
-const yearly = document.querySelector(".yearly");
-const monthly = document.querySelector(".monthly");
-const checkbox = document.querySelector(".checkbox");
+const switchBtn = document.querySelectorAll(".switch");
+const yearly = document.querySelectorAll(".yearly");
+const monthly = document.querySelectorAll(".monthly");
+const checkbox = document.querySelectorAll(".checkbox");
 const freeMonths = document.querySelectorAll(".free-months");
 
 const nav1 = document.querySelectorAll('.first')
@@ -31,7 +31,7 @@ const desktop5 = document.querySelector('.desktop-5')
 const next = document.querySelectorAll(".next");
 const prevBtns = document.querySelectorAll(".prev-btn");
 
-let step = 1;
+let step = 2;
 
 const disableAll = () => {
 		mobile1.classList.add("disable");
@@ -61,12 +61,12 @@ const disableAll = () => {
 const syncInputs = (type) => {
 	if(type==0) {
 		nameInput[0].value = nameInput[1].value
-	emailInput[0].value = emailInput[1].value
-	numberInput[0].value = numberInput[1].value
+		emailInput[0].value = emailInput[1].value
+		numberInput[0].value = numberInput[1].value
 	} else {
 		nameInput[1].value = nameInput[0].value
-	emailInput[1].value = emailInput[0].value
-	numberInput[1].value = numberInput[0].value
+		emailInput[1].value = emailInput[0].value
+		numberInput[1].value = numberInput[0].value
 	}
 
 }
@@ -113,15 +113,18 @@ const displayCheck = () => {
 };
 
 const manageInputs = (type) => {
+	let error = 0;
 	if(type == 'name') {
 		nameInput.forEach(input => {
 			const errorMsg = input.closest('.input-box').querySelector('.error');
 			if(input.value == '') {
 			errorMsg.classList.remove('disable')
 			input.classList.add('input-error');
+			error = 1;
 			} else {
 			errorMsg.classList.add('disable')
 			input.classList.remove('input-error');
+			error = 0;
 			}
 		})
 	} else if(type == 'email') {
@@ -130,9 +133,11 @@ const manageInputs = (type) => {
 			if(input.value == '') {
 			errorMsg.classList.remove('disable')
 			input.classList.add('input-error');
+			error = 1;
 			} else {
 			errorMsg.classList.add('disable')
 			input.classList.remove('input-error');
+			error = 0;
 			}
 		})
 	} else {
@@ -141,12 +146,15 @@ const manageInputs = (type) => {
 			if(input.value == '') {
 			errorMsg.classList.remove('disable')
 			input.classList.add('input-error');
+			error = 1;
 			} else {
 			errorMsg.classList.add('disable')
 			input.classList.remove('input-error');
+			error = 0;
 			}
 		})
 	}
+	return error;
 
 }
 
@@ -170,13 +178,24 @@ const managePrevBtn = (mode) => {
 
 nextStepBtn.forEach((btn) => {
 	btn.addEventListener("click", () => {
-		if(step==1) {
-			syncInputs(1);
-			manageInputs('name')
-			manageInputs('email')
-			manageInputs('number')
-		}
 		
+		let errors = 0;
+		if(step==1) {
+			if(btn == nextStepBtn[0]) {
+				syncInputs(1);
+			} else {
+				syncInputs(0);
+			}
+			
+			errors += manageInputs('name')
+			errors += manageInputs('email')
+			errors += manageInputs('number')
+
+			if(errors == 0) {
+				step++;
+				displayCheck();
+			}
+		}
 	});
 });
 
@@ -190,20 +209,36 @@ prevBtns.forEach(btn => {
 
 
 
-switchBtn.addEventListener("click", (e) => {
-	if (checkbox.checked) {
-		monthly.classList.remove("frequency-active");
-		yearly.classList.add("frequency-active");
-		freeMonths.forEach((month) => {
-			month.classList.remove("disable");
-		});
-	} else {
-		yearly.classList.remove("frequency-active");
-		monthly.classList.add("frequency-active");
-		freeMonths.forEach((month) => {
-			month.classList.add("disable");
-		});
-	}
-});
+switchBtn.forEach((btn,index) => {
+	btn.addEventListener("click", (e) => {
+		const box = checkbox[index]
+			if (box.checked) {
+				monthly.forEach(monthly => {
+
+					monthly.classList.remove("frequency-active");
+				})
+				yearly.forEach(yearly => {
+
+					yearly.classList.add("frequency-active");
+				})
+				freeMonths.forEach((month) => {
+					month.classList.remove("hide");
+				});
+			} else {
+				yearly.forEach(yearly => {
+
+					yearly.classList.remove("frequency-active");
+				})
+				monthly.forEach(monthly => {
+
+					monthly.classList.add("frequency-active");
+				})
+				freeMonths.forEach((month) => {
+					month.classList.add("hide");
+				});
+			}
+		})
+	});
+
 
 document.addEventListener("DOMContentLoaded", displayCheck);
