@@ -12,6 +12,10 @@ const nav2 = document.querySelectorAll('.second')
 const nav3 = document.querySelectorAll('.third')
 const nav4 = document.querySelectorAll('.fourth')
 
+const nameInput = document.querySelectorAll('#name');
+const emailInput = document.querySelectorAll('#email');
+const numberInput = document.querySelectorAll('#number');
+
 const mobile1 = document.querySelector(".mobile-1");
 const mobile2 = document.querySelector(".mobile-2");
 const mobile3 = document.querySelector(".mobile-3");
@@ -52,6 +56,19 @@ const disableAll = () => {
 		nav4.forEach(nav4 => {
 			nav4.classList.remove('circle-active')
 		})
+}
+
+const syncInputs = (type) => {
+	if(type==0) {
+		nameInput[0].value = nameInput[1].value
+	emailInput[0].value = emailInput[1].value
+	numberInput[0].value = numberInput[1].value
+	} else {
+		nameInput[1].value = nameInput[0].value
+	emailInput[1].value = emailInput[0].value
+	numberInput[1].value = numberInput[0].value
+	}
+
 }
 
 const displayCheck = () => {
@@ -95,6 +112,44 @@ const displayCheck = () => {
 	}
 };
 
+const manageInputs = (type) => {
+	if(type == 'name') {
+		nameInput.forEach(input => {
+			const errorMsg = input.closest('.input-box').querySelector('.error');
+			if(input.value == '') {
+			errorMsg.classList.remove('disable')
+			input.classList.add('input-error');
+			} else {
+			errorMsg.classList.add('disable')
+			input.classList.remove('input-error');
+			}
+		})
+	} else if(type == 'email') {
+		emailInput.forEach(input => {
+			const errorMsg = input.closest('.input-box').querySelector('.error');
+			if(input.value == '') {
+			errorMsg.classList.remove('disable')
+			input.classList.add('input-error');
+			} else {
+			errorMsg.classList.add('disable')
+			input.classList.remove('input-error');
+			}
+		})
+	} else {
+		numberInput.forEach(input => {
+			const errorMsg = input.closest('.input-box').querySelector('.error');
+			if(input.value == '') {
+			errorMsg.classList.remove('disable')
+			input.classList.add('input-error');
+			} else {
+			errorMsg.classList.add('disable')
+			input.classList.remove('input-error');
+			}
+		})
+	}
+
+}
+
 const managePrevBtn = (mode) => {
 	if (mode == 1) {
 		prevBtns.forEach(btn => {
@@ -115,8 +170,13 @@ const managePrevBtn = (mode) => {
 
 nextStepBtn.forEach((btn) => {
 	btn.addEventListener("click", () => {
-		step++;
-		displayCheck();
+		if(step==1) {
+			syncInputs(1);
+			manageInputs('name')
+			manageInputs('email')
+			manageInputs('number')
+		}
+		
 	});
 });
 

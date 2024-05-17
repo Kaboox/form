@@ -166,6 +166,15 @@ body {
 		gap: 0.5em;
 		width: 100%;
 
+		.input-text {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.error {
+			color: red;
+		}
+
 		label {
 			font-size: 1.2rem;
 			font-weight: bold;
@@ -175,6 +184,10 @@ body {
 			border: 1px solid lightgray;
 			padding: 0.8em;
 			border-radius: 5px;
+		}
+
+		.input-error {
+			border: 1px solid tomato;
 		}
 
 		input:focus {
@@ -463,10 +476,25 @@ body {
 				flex-direction: column;
 				gap: 0.5em;
 
+				.input-text {
+					display: flex;
+					justify-content: space-between;
+				}
+		
+				.error {
+					color: red;
+				}
+
+				
+
 				input {
 					padding: 1em;
 					border: 1px solid lightgray;
 					border-radius: 8px;
+				}
+
+				.input-error {
+					border: 1px solid tomato;
 				}
 
 				input:focus {
