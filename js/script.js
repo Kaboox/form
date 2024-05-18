@@ -38,6 +38,7 @@ const next = document.querySelectorAll(".next");
 const prevBtns = document.querySelectorAll(".prev-btn");
 
 let step = 2;
+let planType = 0;
 
 const disableAll = () => {
 		mobile1.classList.add("disable");
@@ -74,6 +75,7 @@ const disablePlan = () => {
 	proPlan.forEach(plan => {
 		plan.classList.remove('plan-box-active')
 	})
+	planType = 0;
 }
 
 const syncInputs = (type) => {
@@ -217,7 +219,10 @@ nextStepBtn.forEach((btn) => {
 				displayCheck();
 			}
 		} else if(step == 2) {
-
+			if(planType != 0) {
+				step++;
+				displayCheck();
+			}
 		}
 	});
 });
@@ -233,6 +238,7 @@ prevBtns.forEach(btn => {
 arcadePlan.forEach(plan => {
 	plan.addEventListener('click', () => {
 		disablePlan();
+		planType = 1;
 		arcadePlan.forEach(arcade => {
 			arcade.classList.add('plan-box-active')
 		})
@@ -244,11 +250,14 @@ advancedPlan.forEach(plan => {
 		advancedPlan.forEach(arcade => {
 			arcade.classList.add('plan-box-active')
 		})
+		planType = 2;
+		console.log(plan)
 	})
 })
 proPlan.forEach(plan => {
 	plan.addEventListener('click', () => {
 		disablePlan();
+		planType = 3;
 		proPlan.forEach(arcade => {
 			arcade.classList.add('plan-box-active')
 		})
@@ -259,6 +268,9 @@ switchBtn.forEach((btn,index) => {
 	btn.addEventListener("click", (e) => {
 		const box = checkbox[index]
 			if (box.checked) {
+				checkbox.forEach(box => {
+					box.checked = true;
+				})
 				monthly.forEach(monthly => {
 					
 					monthly.classList.remove("frequency-active");
@@ -277,6 +289,9 @@ switchBtn.forEach((btn,index) => {
 					price.classList.remove("disable")
 				})
 			} else {
+				checkbox.forEach(box => {
+					box.checked = false;
+				})
 				yearly.forEach(yearly => {
 
 					yearly.classList.remove("frequency-active");
