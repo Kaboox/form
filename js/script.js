@@ -6,6 +6,8 @@ const yearly = document.querySelectorAll(".yearly");
 const monthly = document.querySelectorAll(".monthly");
 const checkbox = document.querySelectorAll(".checkbox");
 const freeMonths = document.querySelectorAll(".free-months");
+const monthlyPrice =document.querySelectorAll('.monthly-price')
+const yearlyPrice =document.querySelectorAll('.yearly-price')
 
 const nav1 = document.querySelectorAll('.first')
 const nav2 = document.querySelectorAll('.second')
@@ -15,6 +17,10 @@ const nav4 = document.querySelectorAll('.fourth')
 const nameInput = document.querySelectorAll('#name');
 const emailInput = document.querySelectorAll('#email');
 const numberInput = document.querySelectorAll('#number');
+
+const arcadePlan = document.querySelectorAll('.arcade')
+const advancedPlan = document.querySelectorAll('.advanced')
+const proPlan = document.querySelectorAll('.pro')
 
 const mobile1 = document.querySelector(".mobile-1");
 const mobile2 = document.querySelector(".mobile-2");
@@ -56,6 +62,18 @@ const disableAll = () => {
 		nav4.forEach(nav4 => {
 			nav4.classList.remove('circle-active')
 		})
+}
+
+const disablePlan = () => {
+	arcadePlan.forEach(plan => {
+		plan.classList.remove('plan-box-active')
+	})
+	advancedPlan.forEach(plan => {
+		plan.classList.remove('plan-box-active')
+	})
+	proPlan.forEach(plan => {
+		plan.classList.remove('plan-box-active')
+	})
 }
 
 const syncInputs = (type) => {
@@ -158,6 +176,9 @@ const manageInputs = (type) => {
 
 }
 
+
+
+
 const managePrevBtn = (mode) => {
 	if (mode == 1) {
 		prevBtns.forEach(btn => {
@@ -195,6 +216,8 @@ nextStepBtn.forEach((btn) => {
 				step++;
 				displayCheck();
 			}
+		} else if(step == 2) {
+
 		}
 	});
 });
@@ -207,14 +230,37 @@ prevBtns.forEach(btn => {
 })
 
 
-
+arcadePlan.forEach(plan => {
+	plan.addEventListener('click', () => {
+		disablePlan();
+		arcadePlan.forEach(arcade => {
+			arcade.classList.add('plan-box-active')
+		})
+	})
+})
+advancedPlan.forEach(plan => {
+	plan.addEventListener('click', () => {
+		disablePlan();
+		advancedPlan.forEach(arcade => {
+			arcade.classList.add('plan-box-active')
+		})
+	})
+})
+proPlan.forEach(plan => {
+	plan.addEventListener('click', () => {
+		disablePlan();
+		proPlan.forEach(arcade => {
+			arcade.classList.add('plan-box-active')
+		})
+	})
+})
 
 switchBtn.forEach((btn,index) => {
 	btn.addEventListener("click", (e) => {
 		const box = checkbox[index]
 			if (box.checked) {
 				monthly.forEach(monthly => {
-
+					
 					monthly.classList.remove("frequency-active");
 				})
 				yearly.forEach(yearly => {
@@ -224,6 +270,12 @@ switchBtn.forEach((btn,index) => {
 				freeMonths.forEach((month) => {
 					month.classList.remove("hide");
 				});
+				monthlyPrice.forEach(price => {
+					price.classList.add("disable")
+				})
+				yearlyPrice.forEach(price => {
+					price.classList.remove("disable")
+				})
 			} else {
 				yearly.forEach(yearly => {
 
@@ -236,6 +288,12 @@ switchBtn.forEach((btn,index) => {
 				freeMonths.forEach((month) => {
 					month.classList.add("hide");
 				});
+				monthlyPrice.forEach(price => {
+					price.classList.remove("disable")
+				})
+				yearlyPrice.forEach(price => {
+					price.classList.add("disable")
+				})
 			}
 		})
 	});
