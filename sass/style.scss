@@ -336,6 +336,11 @@ body {
 			gap: 0.5em;
 		}
 	}
+	
+	.addon-active {
+		background-color: rgba(175, 202, 235, 0.1);
+		border: 1px solid hsl(213, 96%, 18%);
+	}
 }
 
 .mobile-4 {
@@ -566,6 +571,11 @@ body {
 						justify-content: center;
 						gap: 1em;
 					}
+				}
+
+				.addon-active {
+					background-color: rgba(175, 202, 235, 0.1);
+					border: 1px solid hsl(213, 96%, 18%);
 				}
 			}
 			.next {

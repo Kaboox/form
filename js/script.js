@@ -37,8 +37,10 @@ const desktop5 = document.querySelector('.desktop-5')
 const next = document.querySelectorAll(".next");
 const prevBtns = document.querySelectorAll(".prev-btn");
 
-let step = 2;
+let step = 3;
 let planType = 0;
+
+let selectedAddons = [];
 
 const disableAll = () => {
 		mobile1.classList.add("disable");
@@ -313,5 +315,32 @@ switchBtn.forEach((btn,index) => {
 		})
 	});
 
+	const updateAddons = (addon, isChecked) => {
+		if (isChecked) {
+		  selectedAddons.push(addon);
+		  
+		} else {
+		  selectedAddons = selectedAddons.filter(item => item !== addon);
+		}
+	  };
+
+	  const syncAddons = () => {
+		const checkboxes = document.querySelectorAll('.online-service, .larger-storage, .customizable-profile');
+		checkboxes.forEach(checkbox => {
+		  checkbox.checked = selectedAddons.includes(checkbox.className);
+		});
+	  };
+	  
+	  // Event listeners dla pól wyboru dodatków
+	  const addonCheckboxes = document.querySelectorAll('.online-service, .larger-storage, .customizable-profile');
+	  addonCheckboxes.forEach(checkbox => {
+		checkbox.addEventListener('change', (e) => {
+		  const addon = e.target.className;
+		  console.log(e.target.closest('addon-left'))
+		  //updateAddons(addon, e.target.checked, e.target.closest('addon-box'));
+		  syncAddons();
+		});
+	  });
+	  
 
 document.addEventListener("DOMContentLoaded", displayCheck);

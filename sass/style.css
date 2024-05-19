@@ -287,6 +287,10 @@ body {
   flex-direction: column;
   gap: 0.5em;
 }
+.mobile-3 .addon-active {
+  background-color: rgba(175, 202, 235, 0.1);
+  border: 1px solid hsl(213, 96%, 18%);
+}
 
 .mobile-4 {
   grid-row: 2/8;
@@ -489,6 +493,10 @@ body {
     align-items: center;
     justify-content: center;
     gap: 1em;
+  }
+  .wrapper .right .addons .addon-active {
+    background-color: rgba(175, 202, 235, 0.1);
+    border: 1px solid hsl(213, 96%, 18%);
   }
   .wrapper .right .next {
     grid-column: 1/3;
