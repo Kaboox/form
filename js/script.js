@@ -225,6 +225,9 @@ nextStepBtn.forEach((btn) => {
 				step++;
 				displayCheck();
 			}
+		} else {
+			step++;
+			displayCheck();
 		}
 	});
 });
@@ -336,8 +339,7 @@ switchBtn.forEach((btn,index) => {
 	  addonCheckboxes.forEach(checkbox => {
 		checkbox.addEventListener('change', (e) => {
 		  const addon = e.target.className;
-		  console.log(e.target.closest('addon-left'))
-		  //updateAddons(addon, e.target.checked, e.target.closest('addon-box'));
+		  updateAddons(addon, e.target.checked, e.target.closest('.addon-box'));
 		  syncAddons();
 		});
 	  });
