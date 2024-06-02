@@ -39,6 +39,7 @@ const prevBtns = document.querySelectorAll(".prev-btn");
 
 let step = 3;
 let planType = 0;
+let yearlyPlan = 0;
 
 let selectedAddons = [];
 
@@ -274,6 +275,7 @@ switchBtn.forEach((btn,index) => {
 		const box = checkbox[index]
 			if (box.checked) {
 				checkbox.forEach(box => {
+					yearlyPlan = 1;
 					box.checked = true;
 				})
 				monthly.forEach(monthly => {
@@ -295,6 +297,7 @@ switchBtn.forEach((btn,index) => {
 				})
 			} else {
 				checkbox.forEach(box => {
+					yearlyPlan = 0;
 					box.checked = false;
 				})
 				yearly.forEach(yearly => {
