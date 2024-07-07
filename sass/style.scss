@@ -214,6 +214,26 @@ body {
 	}
 }
 
+.summary-box {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	width: 100%;
+	padding: 1em;
+
+	.change {
+		border: none;
+		background: none;
+		text-decoration: underline;
+		color: rgba(50,50,50,.7);
+	}
+
+	.plan-type {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
 .mobile-1 {
 	grid-row: 2/8;
 }

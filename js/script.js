@@ -8,6 +8,7 @@ const checkbox = document.querySelectorAll(".checkbox");
 const freeMonths = document.querySelectorAll(".free-months");
 const monthlyPrice =document.querySelectorAll('.monthly-price')
 const yearlyPrice =document.querySelectorAll('.yearly-price')
+const summaryBox = document.querySelector('.summary-box');
 
 const nav1 = document.querySelectorAll('.first')
 const nav2 = document.querySelectorAll('.second')
@@ -37,9 +38,15 @@ const desktop5 = document.querySelector('.desktop-5')
 const next = document.querySelectorAll(".next");
 const prevBtns = document.querySelectorAll(".prev-btn");
 
-let step = 3;
+let step = 1;
 let planType = 0;
 let yearlyPlan = 0;
+
+const planTypes = {
+	1: "Arcade",
+	2: "Advanced",
+	3: "Pro"
+};
 
 let selectedAddons = [];
 
@@ -126,6 +133,7 @@ const displayCheck = () => {
 		nav4.forEach(nav4 => {
 			nav4.classList.add('circle-active')
 		})
+		renderSummary();
 		managePrevBtn(1);
 	} else {
 		disableAll();
@@ -347,5 +355,36 @@ switchBtn.forEach((btn,index) => {
 		});
 	  });
 	  
+const renderSummary = () => {
+
+	const planType = document.createElement('div');
+	planType.classList.add('plan-type');
+
+	const planTypeName = document.createElement('div');
+	planType.classList.add('plan-type-name');
+
+	const planTypeNameText = document.createElement('p');
+
+	planTypeNameText.textContent = planTypes.planType;
+
+	const planTypeChangeBtn = document.createElement('button');
+	planTypeChangeBtn.classList.add('change');
+
+	
+	const price = document.createElement('div');
+	price.classList.add('price');
+
+	const line = document.createElement('hr');
+	
+	
+	
+	
+	summaryBox.append(planType);
+	planType.append(planTypeName);
+	planTypeName.append(planTypeNameText);
+	planTypeName.append(planTypeChangeBtn);
+	summaryBox.append(line);
+	
+}
 
 document.addEventListener("DOMContentLoaded", displayCheck);
