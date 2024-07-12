@@ -38,8 +38,8 @@ const desktop5 = document.querySelector('.desktop-5')
 const next = document.querySelectorAll(".next");
 const prevBtns = document.querySelectorAll(".prev-btn");
 
-let step = 1;
-let planType = 0;
+let step = 4;
+let planType = 1;
 let yearlyPlan = 0;
 
 const planTypes = {
@@ -356,35 +356,96 @@ switchBtn.forEach((btn,index) => {
 	  });
 	  
 const renderSummary = () => {
+	summaryBox.innerHTML = '';
 
-	const planType = document.createElement('div');
-	planType.classList.add('plan-type');
+	const planTypeDiv = document.createElement('div');
+	planTypeDiv.classList.add('plan-type');
 
-	const planTypeName = document.createElement('div');
-	planType.classList.add('plan-type-name');
+	const planTypeNameDiv = document.createElement('div');
+	planTypeNameDiv.classList.add('plan-type-name');
 
-	const planTypeNameText = document.createElement('p');
+	const planTypeNameDivLeft = document.createElement('div');
+	planTypeNameDivLeft.classList.add('plan-type-name-left')
+	
+	const planTypeNameDivRight = document.createElement('div');
+	planTypeNameDivRight.classList.add('plan-type-name-right')
 
-	planTypeNameText.textContent = planTypes.planType;
+	const planTypeName = document.createElement('p');
+	const planTypeFrequency = document.createElement('span');
+
+
+	planTypeName.textContent = planTypes[planType];
+	if (yearlyPlan) {
+		planTypeFrequency.textContent = " (Yearly)"
+	} else {
+		planTypeFrequency.textContent = " (Monthly)"
+	}
 
 	const planTypeChangeBtn = document.createElement('button');
 	planTypeChangeBtn.classList.add('change');
+	planTypeChangeBtn.textContent = 'Change';
 
 	
-	const price = document.createElement('div');
+	const price = document.createElement('p');
 	price.classList.add('price');
+	price.textContent = "4$"
+
+	const addonBoxFrequency = document.createElement('span');
+			if(yearlyPlan) {
+				addonBoxFrequency.textContent = '/yr'
+			} else {
+				addonBoxFrequency.textContent = '/mo'
+			}
+	price.append(addonBoxFrequency);
+	
 
 	const line = document.createElement('hr');
 	
 	
 	
 	
-	summaryBox.append(planType);
-	planType.append(planTypeName);
-	planTypeName.append(planTypeNameText);
-	planTypeName.append(planTypeChangeBtn);
+	planTypeNameDivLeft.append(planTypeName)
+	planTypeName.append(planTypeFrequency)
+	planTypeNameDivLeft.append(planTypeChangeBtn)
+	planTypeNameDivRight.append(price)
+	planTypeNameDiv.append(planTypeNameDivLeft);
+	planTypeNameDiv.append(planTypeNameDivRight);
+	planTypeDiv.append(planTypeNameDiv)
+	summaryBox.append(planTypeDiv);
 	summaryBox.append(line);
+
+
+	if(selectedAddons.length != 0) {
+		selectedAddons.forEach(addon => {
+			const addonBox = document.createElement('div');
+			addonBox.classList.add('addon-box');
+
+			const addonBoxLeft = document.createElement('div');
+			const addonBoxLeftText = document.createElement('p');
+			addonBoxLeftText.textContent = addon;
+			addonBoxLeft.append(addonBoxLeftText);
+
+			const addonBoxRight = document.createElement('div');
+			const addonBoxPrice = document.createElement('p');
+			const addonBoxFrequency = document.createElement('span');
+			if (yearlyPlan) {
+				addonBoxFrequency.textContent = '/yr';
+			} else {
+				addonBoxFrequency.textContent = '/mo';
+			}
+			addonBoxPrice.classList.add('addon-box-price');
+			addonBoxPrice.append(addonBoxFrequency);
+			addonBoxRight.append(addonBoxPrice);
+
+
+			addonBox.append(addonBoxLeft);
+			addonBox.append(addonBoxRight);
+			summaryBox.append(addonBox);
+		})
+	}
+
 	
 }
+
 
 document.addEventListener("DOMContentLoaded", displayCheck);
