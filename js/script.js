@@ -38,7 +38,7 @@ const desktop5 = document.querySelector('.desktop-5')
 const next = document.querySelectorAll(".next");
 const prevBtns = document.querySelectorAll(".prev-btn");
 
-let step = 4;
+let step = 3;
 let planType = 1;
 let yearlyPlan = 0;
 
@@ -47,6 +47,17 @@ const planTypes = {
 	2: "Advanced",
 	3: "Pro"
 };
+
+const monthlyAddons = {
+	"online-service": 1,
+	"larger-storage": 2,
+	"customizable-profile": 2
+}
+const yearlyAddons = {
+	"online-service": 10,
+	"larger-storage": 20,
+	"customizable-profile": 20
+}
 
 let selectedAddons = [];
 
@@ -427,10 +438,13 @@ const renderSummary = () => {
 
 			const addonBoxRight = document.createElement('div');
 			const addonBoxPrice = document.createElement('p');
+			
 			const addonBoxFrequency = document.createElement('span');
 			if (yearlyPlan) {
+				addonBoxPrice.textContent = yearlyAddons[addon] + "$";
 				addonBoxFrequency.textContent = '/yr';
 			} else {
+				addonBoxPrice.textContent = monthlyAddons[addon]  + "$";
 				addonBoxFrequency.textContent = '/mo';
 			}
 			addonBoxPrice.classList.add('addon-box-price');
