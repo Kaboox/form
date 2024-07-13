@@ -48,6 +48,17 @@ const planTypes = {
 	3: "Pro"
 };
 
+const monthlyPlanTypePrices = {
+	1: 9,
+	2: 12,
+	3: 15
+}
+const yearlyPlanTypePrices = {
+	1: 90,
+	2: 120,
+	3: 150
+}
+
 const monthlyAddons = {
 	"online-service": 1,
 	"larger-storage": 2,
@@ -399,12 +410,14 @@ const renderSummary = () => {
 	
 	const price = document.createElement('p');
 	price.classList.add('price');
-	price.textContent = "4$"
+	
 
 	const addonBoxFrequency = document.createElement('span');
 			if(yearlyPlan) {
+				price.textContent = yearlyPlanTypePrices[planType] + "$"
 				addonBoxFrequency.textContent = '/yr'
 			} else {
+				price.textContent = monthlyPlanTypePrices[planType] + "$"
 				addonBoxFrequency.textContent = '/mo'
 			}
 	price.append(addonBoxFrequency);
