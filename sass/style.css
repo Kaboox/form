@@ -327,6 +327,9 @@ body {
   padding: 1em;
   border-radius: 8px;
 }
+.mobile-4 .summary-box .summary-total {
+  padding: 1em;
+}
 .mobile-4 .summary-box .plan-type {
   font-weight: bold;
 }

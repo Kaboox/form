@@ -383,6 +383,7 @@ const renderSummary = () => {
 	const summaryDetails = document.createElement('div')
 	summaryDetails.classList.add('summary-details')
 	const summaryTotal = document.createElement('div')
+	summaryTotal.classList.add('summary-total');
 
 	const planTypeDiv = document.createElement('div');
 	planTypeDiv.classList.add('plan-type');
@@ -440,8 +441,9 @@ const renderSummary = () => {
 	planTypeNameDiv.append(planTypeNameDivRight);
 	planTypeDiv.append(planTypeNameDiv)
 	summaryDetails.append(planTypeDiv)
-	summaryBox.append(summaryDetails);
 	summaryDetails.append(line);
+	summaryBox.append(summaryDetails);
+	summaryBox.append(summaryTotal);
 
 
 	if(selectedAddons.length != 0) {
@@ -481,6 +483,7 @@ const renderSummary = () => {
 
 			const totalSummaryBoxLeft = document.createElement('div');
 			const totalSummaryBoxLeftText = document.createElement('p');
+			totalSummaryBoxLeftText.textContent = 'Total ';
 			const totalSummaryBoxFrequency = document.createElement('span');
 			
 			if (yearlyPlan) {
@@ -491,8 +494,9 @@ const renderSummary = () => {
 			totalSummaryBoxLeftText.append(totalSummaryBoxFrequency)
 			totalSummaryBoxLeft.append(totalSummaryBoxLeftText)
 			totalSummaryBox.append(totalSummaryBoxLeft)
+			summaryTotal.append(totalSummaryBox);
 
-			summaryBox.append(totalSummaryBox);
+			summaryBox.append(summaryTotal);
 	
 }
 
