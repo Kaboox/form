@@ -380,6 +380,10 @@ switchBtn.forEach((btn,index) => {
 const renderSummary = () => {
 	summaryBox.innerHTML = '';
 
+	const summaryDetails = document.createElement('div')
+	summaryDetails.classList.add('summary-details')
+	const summaryTotal = document.createElement('div')
+
 	const planTypeDiv = document.createElement('div');
 	planTypeDiv.classList.add('plan-type');
 
@@ -435,8 +439,9 @@ const renderSummary = () => {
 	planTypeNameDiv.append(planTypeNameDivLeft);
 	planTypeNameDiv.append(planTypeNameDivRight);
 	planTypeDiv.append(planTypeNameDiv)
-	summaryBox.append(planTypeDiv);
-	summaryBox.append(line);
+	summaryDetails.append(planTypeDiv)
+	summaryBox.append(summaryDetails);
+	summaryDetails.append(line);
 
 
 	if(selectedAddons.length != 0) {
@@ -467,10 +472,27 @@ const renderSummary = () => {
 
 			addonBox.append(addonBoxLeft);
 			addonBox.append(addonBoxRight);
-			summaryBox.append(addonBox);
+			summaryDetails.append(addonBox);
 		})
 	}
 
+		const totalSummaryBox = document.createElement('div');
+		totalSummaryBox.classList.add('total-summary-box');
+
+			const totalSummaryBoxLeft = document.createElement('div');
+			const totalSummaryBoxLeftText = document.createElement('p');
+			const totalSummaryBoxFrequency = document.createElement('span');
+			
+			if (yearlyPlan) {
+				totalSummaryBoxFrequency.textContent = "(per year)"
+			} else {
+				totalSummaryBoxFrequency.textContent = "(per month)"
+			}
+			totalSummaryBoxLeftText.append(totalSummaryBoxFrequency)
+			totalSummaryBoxLeft.append(totalSummaryBoxLeftText)
+			totalSummaryBox.append(totalSummaryBoxLeft)
+
+			summaryBox.append(totalSummaryBox);
 	
 }
 

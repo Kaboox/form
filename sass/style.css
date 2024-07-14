@@ -189,7 +189,6 @@ body {
   flex-direction: column;
   gap: 1em;
   width: 100%;
-  padding: 1em;
 }
 .summary-box .change {
   border: none;
@@ -316,10 +315,17 @@ body {
 .mobile-4 .summary-box {
   display: flex;
   flex-direction: column;
-  background-color: rgba(200, 200, 200, 0.1);
-  border-radius: 8px;
+  gap: 1em;
   color: hsl(213, 96%, 18%);
   font-size: 1.4rem;
+}
+.mobile-4 .summary-box .summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: rgba(175, 202, 235, 0.1);
+  padding: 1em;
+  border-radius: 8px;
 }
 .mobile-4 .summary-box .plan-type {
   font-weight: bold;
