@@ -189,7 +189,6 @@ body {
   flex-direction: column;
   gap: 1em;
   width: 100%;
-  padding: 1em;
 }
 .summary-box .change {
   border: none;
@@ -316,17 +315,45 @@ body {
 .mobile-4 .summary-box {
   display: flex;
   flex-direction: column;
-  background-color: rgba(200, 200, 200, 0.1);
+  gap: 1em;
+  color: hsl(213, 96%, 18%);
+  font-size: 1.4rem;
+}
+.mobile-4 .summary-box .summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: rgba(175, 202, 235, 0.1);
+  padding: 1em;
   border-radius: 8px;
+}
+.mobile-4 .summary-box .summary-total {
+  padding: 1em;
+}
+.mobile-4 .summary-box .plan-type {
+  font-weight: bold;
 }
 .mobile-4 .summary-box .plan-type .plan-type-name {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
-.mobile-4 .summary-box .plan-type .plan-type-name .price {
-  font-weight: bold;
+.mobile-4 .summary-box .plan-type .plan-type-name .plan-type-name-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.mobile-4 .summary-box .addon-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(50, 50, 50, 0.7);
+}
+.mobile-4 .summary-box .addon-box .addon-box-price {
   color: hsl(213, 96%, 18%);
+  font-weight: bold;
 }
 
 .mobile-5 {

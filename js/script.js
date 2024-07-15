@@ -41,6 +41,7 @@ const prevBtns = document.querySelectorAll(".prev-btn");
 let step = 3;
 let planType = 1;
 let yearlyPlan = 0;
+let totalPrice = 0;
 
 const planTypes = {
 	1: "Arcade",
@@ -379,6 +380,7 @@ switchBtn.forEach((btn,index) => {
 	  
 const renderSummary = () => {
 	summaryBox.innerHTML = '';
+	totalPrice = 0;
 
 	const summaryDetails = document.createElement('div')
 	summaryDetails.classList.add('summary-details')
@@ -420,9 +422,11 @@ const renderSummary = () => {
 	const addonBoxFrequency = document.createElement('span');
 			if(yearlyPlan) {
 				price.textContent = yearlyPlanTypePrices[planType] + "$"
+				totalPrice += yearlyPlanTypePrices[planType]
 				addonBoxFrequency.textContent = '/yr'
 			} else {
 				price.textContent = monthlyPlanTypePrices[planType] + "$"
+				totalPrice += monthlyPlanTypePrices[planType]
 				addonBoxFrequency.textContent = '/mo'
 			}
 	price.append(addonBoxFrequency);
