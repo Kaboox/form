@@ -488,19 +488,36 @@ const renderSummary = () => {
 			const totalSummaryBoxLeft = document.createElement('div');
 			const totalSummaryBoxLeftText = document.createElement('p');
 			totalSummaryBoxLeftText.textContent = 'Total ';
-			const totalSummaryBoxFrequency = document.createElement('span');
+			const totalSummaryBoxLeftFrequency = document.createElement('span');
+
+			const totalSummaryBoxRight = document.createElement('div');
+			const totalSummaryBoxRightText = document.createElement('p')
+			const totalSummaryBoxRightFrequency = document.createElement('span');
+
+
+			
 			
 			if (yearlyPlan) {
-				totalSummaryBoxFrequency.textContent = "(per year)"
+				totalSummaryBoxLeftFrequency.textContent = "(per year)"
+				totalSummaryBoxRightFrequency.textContent = '/yr'
 			} else {
-				totalSummaryBoxFrequency.textContent = "(per month)"
+				totalSummaryBoxLeftFrequency.textContent = "(per month)"
+				totalSummaryBoxRightFrequency.textContent = '/mo'
 			}
-			totalSummaryBoxLeftText.append(totalSummaryBoxFrequency)
+			totalSummaryBoxLeftText.append(totalSummaryBoxLeftFrequency)
 			totalSummaryBoxLeft.append(totalSummaryBoxLeftText)
-			totalSummaryBox.append(totalSummaryBoxLeft)
-			summaryTotal.append(totalSummaryBox);
+			//totalSummaryBox.append(totalSummaryBoxLeft)
+			
 
-			summaryBox.append(summaryTotal);
+			totalSummaryBoxRightText.textContent = '$' + totalPrice;
+			totalSummaryBoxRightText.append(totalSummaryBoxRightFrequency);
+			totalSummaryBoxRight.append(totalSummaryBoxRightText);
+			//totalSummaryBox.append(totalSummaryBoxRight)
+
+			summaryTotal.append(totalSummaryBoxLeft);
+			summaryTotal.append(totalSummaryBoxRight)
+			
+			
 	
 }
 

@@ -329,6 +329,14 @@ body {
 }
 .mobile-4 .summary-box .summary-total {
   padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mobile-4 .summary-box .summary-total .total-summary-box {
+  display: flex;
+  width: 50%;
+  background-color: rgb(2, 41, 90);
 }
 .mobile-4 .summary-box .plan-type {
   font-weight: bold;
