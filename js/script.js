@@ -8,7 +8,7 @@ const checkbox = document.querySelectorAll(".checkbox");
 const freeMonths = document.querySelectorAll(".free-months");
 const monthlyPrice =document.querySelectorAll('.monthly-price')
 const yearlyPrice =document.querySelectorAll('.yearly-price')
-const summaryBox = document.querySelector('.summary-box');
+const summaryBox = document.querySelectorAll('.summary-box');
 
 const nav1 = document.querySelectorAll('.first')
 const nav2 = document.querySelectorAll('.second')
@@ -379,7 +379,9 @@ switchBtn.forEach((btn,index) => {
 	  });
 	  
 const renderSummary = () => {
-	summaryBox.innerHTML = '';
+	summaryBox.forEach(summarybox => {
+		summarybox.innerHTML = '';
+	
 	totalPrice = 0;
 
 	const summaryDetails = document.createElement('div')
@@ -446,8 +448,9 @@ const renderSummary = () => {
 	planTypeDiv.append(planTypeNameDiv)
 	summaryDetails.append(planTypeDiv)
 	summaryDetails.append(line);
-	summaryBox.append(summaryDetails);
-	summaryBox.append(summaryTotal);
+	
+	summarybox.append(summaryDetails);
+	summarybox.append(summaryTotal);
 
 
 	if(selectedAddons.length != 0) {
@@ -506,19 +509,18 @@ const renderSummary = () => {
 			}
 			totalSummaryBoxLeftText.append(totalSummaryBoxLeftFrequency)
 			totalSummaryBoxLeft.append(totalSummaryBoxLeftText)
-			//totalSummaryBox.append(totalSummaryBoxLeft)
+			
 			
 
 			totalSummaryBoxRightText.textContent = '$' + totalPrice;
 			totalSummaryBoxRightText.append(totalSummaryBoxRightFrequency);
 			totalSummaryBoxRight.append(totalSummaryBoxRightText);
-			//totalSummaryBox.append(totalSummaryBoxRight)
 
 			summaryTotal.append(totalSummaryBoxLeft);
 			summaryTotal.append(totalSummaryBoxRight)
 			
 			
-	
+	})
 }
 
 
