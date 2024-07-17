@@ -367,7 +367,7 @@ body {
 		gap: 1em;
 		color: hsl(213, 96%, 18%);
 		font-size: 1.4rem;
-		
+
 		.summary-details {
 			display: flex;
 			flex-direction: column;
@@ -382,7 +382,7 @@ body {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
-			
+
 			.total-summary-box {
 				display: flex;
 				width: 50%;
@@ -404,8 +404,6 @@ body {
 					align-items: center;
 					text-align: center;
 				}
-
-				
 			}
 		}
 
@@ -420,7 +418,6 @@ body {
 				font-weight: bold;
 			}
 		}
-
 	}
 }
 
@@ -656,6 +653,66 @@ body {
 			.next {
 				grid-column: 1/3;
 				grid-row: 6/7;
+			}
+		}
+
+		.summary-box {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			color: hsl(213, 96%, 18%);
+			font-size: 1.4rem;
+			grid-column: 1/3;
+
+			.summary-details {
+				display: flex;
+				flex-direction: column;
+				gap: 1em;
+				background-color: rgba(175, 202, 235, 0.1);
+				padding: 1em;
+				border-radius: 8px;
+			}
+
+			.summary-total {
+				padding: 1em;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+
+				.total-summary-box {
+					display: flex;
+					width: 50%;
+					background-color: rgb(2, 41, 90);
+				}
+			}
+
+			.plan-type {
+				font-weight: bold;
+				.plan-type-name {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+
+					.plan-type-name-right {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						text-align: center;
+					}
+				}
+			}
+
+			.addon-box {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				color: rgba(50, 50, 50, 0.7);
+
+				.addon-box-price {
+					color: hsl(213, 96%, 18%);
+					font-weight: bold;
+				}
 			}
 		}
 

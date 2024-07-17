@@ -570,6 +570,58 @@ body {
     grid-column: 1/3;
     grid-row: 6/7;
   }
+  .wrapper .summary-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    color: hsl(213, 96%, 18%);
+    font-size: 1.4rem;
+    grid-column: 1/3;
+  }
+  .wrapper .summary-box .summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: rgba(175, 202, 235, 0.1);
+    padding: 1em;
+    border-radius: 8px;
+  }
+  .wrapper .summary-box .summary-total {
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .wrapper .summary-box .summary-total .total-summary-box {
+    display: flex;
+    width: 50%;
+    background-color: rgb(2, 41, 90);
+  }
+  .wrapper .summary-box .plan-type {
+    font-weight: bold;
+  }
+  .wrapper .summary-box .plan-type .plan-type-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .wrapper .summary-box .plan-type .plan-type-name .plan-type-name-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .wrapper .summary-box .addon-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(50, 50, 50, 0.7);
+  }
+  .wrapper .summary-box .addon-box .addon-box-price {
+    color: hsl(213, 96%, 18%);
+    font-weight: bold;
+  }
   .wrapper .desktop-5 {
     display: flex;
     flex-direction: column;
