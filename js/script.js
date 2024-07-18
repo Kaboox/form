@@ -413,6 +413,11 @@ const renderSummary = () => {
 	}
 
 	const planTypeChangeBtn = document.createElement('button');
+
+	planTypeChangeBtn.addEventListener('click', () => {
+		step-=2;
+		displayCheck();
+	})
 	planTypeChangeBtn.classList.add('change');
 	planTypeChangeBtn.textContent = 'Change';
 
